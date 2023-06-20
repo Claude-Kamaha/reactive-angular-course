@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CourseDialogComponent } from '../course-dialog/course-dialog.component';
 import { CoursesService } from '../services/courses.service';
+;
 
 
 @Component({
@@ -26,6 +27,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
+    this.reloadCourses()
+  }
+
+  reloadCourses() {
+    console.log("you called me?");
+
     const courses$ = this.coursesService.loadAllCourses().pipe(
       map(courses => courses.sort(sortCoursesBySeqNo))
     )
@@ -37,11 +44,7 @@ export class HomeComponent implements OnInit {
       mycourses.filter(mycourse => mycourse.category === 'ADVANCED')
     ));
   }
-
-
-
 }
-
 
 
 
